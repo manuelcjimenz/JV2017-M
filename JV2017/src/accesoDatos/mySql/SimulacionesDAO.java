@@ -214,17 +214,64 @@ public class SimulacionesDAO implements OperacionesDAO {
 			e.printStackTrace();
 		}
 		throw new DatosException("Alta: " + simulacion.getIdSimulacion() + " ya existe.");
-
+	}
+	
+	/**
+	 * Metodo para dar de baja una simulacion utilizando una consulta sql.
+	 * @author Grupo 1 DAM - Manuel Castillo Jiménez
+	 */
 	@Override
 	public Object baja(String id) throws DatosException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		assert id != null;
+		assert id != "";
+		assert id != " ";
+		Simulacion simulacion = obtener(id);
+		String sql = "DELETE from simulacion (idUsr, fecha, mundo, estado) " + "values (' " 
+		+ obtener(simulacion.getIdSimulacion()); 
+		
+		java.sql.Statement conexion;
+		
+		try {
+			conexion = db.createStatement();
+			conexion.executeUpdate(sql);
+			conexion.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		throw new DatosException("Baja: " + id + " no existe.");
+		
 	}
 
+	/**
+	 * Metodo para actualizar una simulacion con una consulta sql.
+	 * @author Grupo 1 DAM - Manuel Castillo Jiménez
+	 */
+	
 	@Override
 	public void actualizar(Object obj) throws DatosException {
-		// TODO Auto-generated method stub
 		
+		assert obj != null;
+		Simulacion simulacionActualizada = (Simulacion) obj;
+		Simulacion simulacionPrevia = null;
+		String sql = "UPDATE simulacion SET idUsr=?, fecha=?, mundo=?, estado=?, " 
+		+ "WHERE simulacionActualizada=?";
+		java.sql.Statement conexion;
+		
+		try {
+			simulacionPrevia = obtener(simulacionActualizada.getIdSimulacion());
+			simulacionPrevia.setUsr(simulacionActualizada.getUsr());
+			simulacionPrevia.setMundo(simulacionActualizada.getMundo());
+			simulacionPrevia.setFecha(simulacionActualizada.getFecha());
+			simulacionPrevia.setEstado(simulacionActualizada.getEstado());
+			conexion = db.createStatement();
+			conexion.executeUpdate(sql);
+			conexion.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		throw new DatosException("Actualizar: " + simulacionActualizada.getIdSimulacion() + " no existe.");
 	}
 
 	/**
