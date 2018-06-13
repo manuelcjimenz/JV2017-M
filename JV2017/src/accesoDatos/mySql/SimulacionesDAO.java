@@ -221,19 +221,20 @@ public class SimulacionesDAO implements OperacionesDAO {
 	@Override
 	public Object baja(String id) throws DatosException {
 		
-		assert id != null;
-		assert id != "";
-		assert id != " ";
-		Simulacion simulacion = obtener(id);
-		String sql = "DELETE from simulacion (idUsr, fecha, mundo, estado) " + "values (' " 
-		+ obtener(simulacion.getIdSimulacion()); 
+		//No acepta el id si es...
+		assert id != null;		//Nulo
+		assert id != "";			//No hay nada
+		assert id != " ";		//
+		Simulacion simulacion = obtener(id); //Obtiene el id de la simulacion
+		String sql = "ALTER table DELETE from simulacion (idUsr, fecha, mundo, estado) " + "values (' " 
+		+ obtener(simulacion.getIdSimulacion()); //La consulta SQL
 		
-		java.sql.Statement conexion;
+		java.sql.Statement conexion; // Crea una conexion
 		
 		try {
 			conexion = db.createStatement();
-			conexion.executeUpdate(sql);
-			conexion.close();
+			conexion.executeUpdate(sql);	//Ejecuta la accion del string "sql"
+			conexion.close(); //Cierra la conexión con la base de datos
 			
 		} catch (Exception e) {
 			e.printStackTrace();
