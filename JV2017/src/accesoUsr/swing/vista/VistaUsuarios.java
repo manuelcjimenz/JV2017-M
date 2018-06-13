@@ -106,7 +106,7 @@ public class VistaUsuarios extends JFrame {
 	 * This method initializes jContentPane
 	 * @return javax.swing.JPanel
 	 */
-	private JPanel getJContentPane() {
+	public JPanel getJContentPane() {
 		if (jContentPane == null) {
 			jContentPane = new JPanel();
 			jContentPane.setLayout(new BorderLayout());
@@ -124,7 +124,7 @@ public class VistaUsuarios extends JFrame {
 	 * 
 	 * @return javax.swing.JPanel
 	 */
-	private JPanel getJPanelControl() {
+	public JPanel getJPanelControl() {
 		if (jPanelControl == null) {
 			jPanelControl = new JPanel();
 			jPanelControl.setLayout(new FlowLayout());
@@ -139,7 +139,7 @@ public class VistaUsuarios extends JFrame {
 	 * 
 	 * @return javax.swing.JPanel
 	 */
-	private JPanel getJPanelTrabajo() {
+	public JPanel getJPanelTrabajo() {
 		if (jPanelTrabajo == null) {
 			jPanelTrabajo = new JPanel();
 			jPanelTrabajo.setLayout(new BorderLayout());
@@ -157,7 +157,7 @@ public class VistaUsuarios extends JFrame {
 	 * 
 	 * @return javax.swing.JPanel
 	 */
-	private JPanel getJPanelEstado() {
+	public JPanel getJPanelEstado() {
 		if (jPanelEstado == null) {
 			jLabelUsuario = new JLabel();
 			jLabelUsuario.setText("");
@@ -179,7 +179,7 @@ public class VistaUsuarios extends JFrame {
 	 * 
 	 * @return javax.swing.JButton
 	 */
-	private JButton getJButtonSalir() {
+	public JButton getJButtonSalir() {
 		if (jButtonSalir == null) {
 			jButtonSalir = new JButton();
 			jButtonSalir.setText("Salir");
@@ -200,7 +200,7 @@ public class VistaUsuarios extends JFrame {
 	 * 
 	 * @return javax.swing.JPanel
 	 */
-	private JPanel getJPanelGeneral() {
+	public JPanel getJPanelGeneral() {
 		if (jPanelGeneral == null) {
 			jPanelGeneral = new JPanel();
 			jPanelGeneral.setLayout(new BorderLayout());
@@ -216,7 +216,7 @@ public class VistaUsuarios extends JFrame {
 	 * 
 	 * @return javax.swing.JScrollPane
 	 */
-	private JScrollPane getJScrollPaneUsuarioes() {
+	public JScrollPane getJScrollPaneUsuarioes() {
 		if (jScrollPaneUsuarioes == null) {
 			jScrollPaneUsuarioes = new JScrollPane();
 			jScrollPaneUsuarioes.setPreferredSize(new Dimension(200, 300));
@@ -241,7 +241,7 @@ public class VistaUsuarios extends JFrame {
 	}
 
 	// Salida segura �nica de la ventana.
-	private void salirSeguro() {
+	public void salirSeguro() {
 		// Confirmar cierre
 		if (JOptionPane.showConfirmDialog(null, "Confirme que quiere salir...",
 				"Datos de Clientes", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
@@ -257,7 +257,7 @@ public class VistaUsuarios extends JFrame {
 	 * 
 	 * @return javax.swing.JTable
 	 */
-	private JTable getJTable() {
+	public JTable getJTable() {
 		if (jTable == null) {
 			//DefaultTableModel defaultTableModel = UsuariosDAO.getInstancia().getTmUsuarios();
 			//defaultTableModel.setColumnCount(8);
@@ -329,7 +329,7 @@ public class VistaUsuarios extends JFrame {
 	 * 
 	 * @return javax.swing.JPanel
 	 */
-	private JPanel getJPanelDetalle() {
+	public JPanel getJPanelDetalle() {
 		if (jPanelDetalle == null) {
 			GridBagConstraints gridBagConstraints13 = new GridBagConstraints();
 			gridBagConstraints13.fill = GridBagConstraints.VERTICAL;
@@ -453,7 +453,7 @@ public class VistaUsuarios extends JFrame {
 	 * 
 	 * @return javax.swing.JTextField
 	 */
-	private JTextField getJTextFieldNombre() {
+	public JTextField getJTextFieldNombre() {
 		if (jTextFieldNombre == null) {
 			jTextFieldNombre = new JTextField();
 			jTextFieldNombre.setPreferredSize(new Dimension(300, 20));
@@ -467,7 +467,7 @@ public class VistaUsuarios extends JFrame {
 	 * 
 	 * @return javax.swing.JTextField
 	 */
-	private JTextField getJTextFieldCIF() {
+	public JTextField getJTextFieldCIF() {
 		if (jTextFieldCIF == null) {
 			jTextFieldCIF = new JTextField();
 			jTextFieldCIF.setHorizontalAlignment(JTextField.LEFT);
@@ -481,7 +481,7 @@ public class VistaUsuarios extends JFrame {
 	 * 
 	 * @return javax.swing.JTextField
 	 */
-	private JTextField getJTextFieldTelefono() {
+	public JTextField getJTextFieldTelefono() {
 		if (jTextFieldTelefono == null) {
 			jTextFieldTelefono = new JTextField();
 			jTextFieldTelefono.setPreferredSize(new Dimension(300, 20));
@@ -495,7 +495,7 @@ public class VistaUsuarios extends JFrame {
 	 * 
 	 * @return javax.swing.JTextField
 	 */
-	private JTextField getJTextFieldFax() {
+	public JTextField getJTextFieldFax() {
 		if (jTextFieldFax == null) {
 			jTextFieldFax = new JTextField();
 			jTextFieldFax.setPreferredSize(new Dimension(300, 20));
@@ -508,7 +508,7 @@ public class VistaUsuarios extends JFrame {
 	 * 
 	 * @return javax.swing.JTextField
 	 */
-	private JTextField getJTextFieldEmail() {
+	public JTextField getJTextFieldEmail() {
 		if (jTextFieldEmail == null) {
 			jTextFieldEmail = new JTextField();
 			jTextFieldEmail.setPreferredSize(new Dimension(300, 20));
@@ -521,7 +521,7 @@ public class VistaUsuarios extends JFrame {
 	 * 
 	 * @return javax.swing.JTextField
 	 */
-	private JTextField getJTextFieldDireccion() {
+	public JTextField getJTextFieldDireccion() {
 		if (jTextFieldDireccion == null) {
 			jTextFieldDireccion = new JTextField();
 			jTextFieldDireccion.setPreferredSize(new Dimension(300, 20));
@@ -534,7 +534,7 @@ public class VistaUsuarios extends JFrame {
 	 * 
 	 * @return javax.swing.JTextField
 	 */
-	private JTextField getJTextFieldFechaAlta() {
+	public JTextField getJTextFieldFechaAlta() {
 		if (jTextFieldFechaAlta == null) {
 			jTextFieldFechaAlta = new JTextField();
 			jTextFieldFechaAlta.setPreferredSize(new Dimension(300, 20));
@@ -547,7 +547,7 @@ public class VistaUsuarios extends JFrame {
 	 * 	
 	 * @return javax.swing.JButton	
 	 */
-	private JButton getJButtonAlta() {
+	public JButton getJButtonAlta() {
 		if (jButtonAlta == null) {
 			jButtonAlta = new JButton();
 			jButtonAlta.setName("Alta Usuario");
@@ -598,7 +598,7 @@ public class VistaUsuarios extends JFrame {
 	 * 	
 	 * @return javax.swing.JButton	
 	 */
-	private JButton getJButtonModificar() {
+	public JButton getJButtonModificar() {
 		if (jButtonModificar == null) {
 			jButtonModificar = new JButton();
 			jButtonModificar.setText("Modificar Usuario");
@@ -643,7 +643,7 @@ public class VistaUsuarios extends JFrame {
 	 * 	
 	 * @return javax.swing.JButton	
 	 */
-	private JButton getJButtonEliminar() {
+	public JButton getJButtonEliminar() {
 		if (jButtonEliminar == null) {
 			jButtonEliminar = new JButton();
 			jButtonEliminar.setText("Eliminar Usuario");
@@ -682,7 +682,7 @@ public class VistaUsuarios extends JFrame {
 	 * 	
 	 * @return javax.swing.JPanel	
 	 */
-	private JPanel getJPanelBotonera() {
+	public JPanel getJPanelBotonera() {
 		if (jPanelBotonera == null) {
 			GridBagConstraints gridBagConstraints16 = new GridBagConstraints();
 			gridBagConstraints16.gridx = -1;
