@@ -310,20 +310,23 @@ public class SimulacionesDAO implements OperacionesDAO {
 	}
 
 	/**
-	 * Método borrarTodo.
+	 * Método borrarTodo - Elimina todas las simulaciones 
+	 * almacenadas y regenera las predeterminadas.
+	 * 
 	 * @author DAM Grupo 1 - Juan Antonio Espinosa
+	 * @date 13/06/2018
 	 */
 
 	@Override
 	public void borrarTodo() {
 		// Elimina cada uno de los objetos obtenidos
 		for (Simulacion simulacion: obtenerTodos()) {
-		try {
-			java.sql.Statement sentencia;
-			sentencia = db.createStatement();
-			sentencia.execute("DELETE FROM sentencias");
-		} catch (SQLException e) {
-			}
+			try {
+				java.sql.Statement sentencia;
+				sentencia = db.createStatement();
+				sentencia.execute("DELETE FROM sentencias");
+			} catch (SQLException e) {
+				}
 		}
 		cargarPredeterminados();
 	}
