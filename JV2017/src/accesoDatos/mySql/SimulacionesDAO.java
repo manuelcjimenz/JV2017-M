@@ -299,14 +299,20 @@ public class SimulacionesDAO implements OperacionesDAO {
 
 	/**
 	 * Método para listar Ids con consultas sql
+	 * @author GRUPO 1 DAM - Víctor Matínez Martínez , Jose Antonio Aldeguer Madrid
 	 * @author GRUPO 1 DAM - Jose Aldeguer Madrid
 	 * @date 13/06/2018
 	 */
 	
 	@Override
 	public String listarId() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder listado = new StringBuilder();
+		for (Simulacion simulacion: obtenerTodos()) {
+			if (simulacion != null) {
+				listado.append("\n" + simulacion.getIdSimulacion());
+			}
+		}
+		return listado.toString();
 	}
 
 	/**
