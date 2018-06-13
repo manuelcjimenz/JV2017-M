@@ -94,8 +94,8 @@ public class SimulacionesDAO implements OperacionesDAO {
     /**
      *  Método para generar de datos predeterminados.
      */
-    private void cargarPredeterminados() throws SQLException, DatosException {
-     
+    private void cargarPredeterminados() {
+        
     }
  
  
@@ -309,10 +309,23 @@ public class SimulacionesDAO implements OperacionesDAO {
 		return null;
 	}
 
+	/**
+	 * Método borrarTodo.
+	 * @author DAM Grupo 1 - Juan Antonio Espinosa
+	 */
+
 	@Override
 	public void borrarTodo() {
-		// TODO Auto-generated method stub
-		
+		// Elimina cada uno de los objetos obtenidos
+		for (Simulacion simulacion: obtenerTodos()) {
+		try {
+			java.sql.Statement sentencia;
+			sentencia = db.createStatement();
+			sentencia.execute("DELETE FROM sentencias");
+		} catch (SQLException e) {
+			}
+		}
+		cargarPredeterminados();
 	}
 
     /**
