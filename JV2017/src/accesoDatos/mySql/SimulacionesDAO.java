@@ -212,12 +212,36 @@ public class SimulacionesDAO implements OperacionesDAO {
 			e.printStackTrace();
 		}
 		throw new DatosException("Alta: " + simulacion.getIdSimulacion() + " ya existe.");
-
+	}
+	
+	/**
+	 * Metodo para dar de baja una simulacion utilizando una consulta sql.
+	 * @author Grupo 1 DAM - Manuel Castillo Jiménez
+	 */
 	@Override
 	public Object baja(String id) throws DatosException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		assert id != null;
+		assert id != "";
+		assert id != " ";
+		Simulacion simulacion = obtener(id);
+		String sql = "DELETE from simulacion (idUsr, fecha, mundo, estado) " + "values (' " 
+		+ obtener(simulacion.getIdSimulacion()); 
+		
+		java.sql.Statement conexion;
+		
+		try {
+			conexion = db.createStatement();
+			conexion.executeUpdate(sql);
+			conexion.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		throw new DatosException("Baja: " + id + " no existe.");
+		
 	}
+
 
 	@Override
 	public void actualizar(Object obj) throws DatosException {
