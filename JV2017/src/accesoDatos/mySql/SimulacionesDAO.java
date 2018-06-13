@@ -94,8 +94,8 @@ public class SimulacionesDAO implements OperacionesDAO {
     /**
      *  Método para generar de datos predeterminados.
      */
-    private void cargarPredeterminados() throws SQLException, DatosException {
-     
+    private void cargarPredeterminados() {
+        
     }
  
  
@@ -223,19 +223,20 @@ public class SimulacionesDAO implements OperacionesDAO {
 	@Override
 	public Object baja(String id) throws DatosException {
 		
-		assert id != null;
-		assert id != "";
-		assert id != " ";
-		Simulacion simulacion = obtener(id);
-		String sql = "DELETE from simulacion (idUsr, fecha, mundo, estado) " + "values (' " 
-		+ obtener(simulacion.getIdSimulacion()); 
+		//No acepta el id si es...
+		assert id != null;		//Nulo
+		assert id != "";			//No hay nada
+		assert id != " ";		//
+		Simulacion simulacion = obtener(id); //Obtiene el id de la simulacion
+		String sql = "ALTER table DELETE from simulacion (idUsr, fecha, mundo, estado) " + "values (' " 
+		+ obtener(simulacion.getIdSimulacion()); //La consulta SQL
 		
-		java.sql.Statement conexion;
+		java.sql.Statement conexion; // Crea una conexion
 		
 		try {
 			conexion = db.createStatement();
-			conexion.executeUpdate(sql);
-			conexion.close();
+			conexion.executeUpdate(sql);	//Ejecuta la accion del string "sql"
+			conexion.close(); //Cierra la conexión con la base de datos
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -276,7 +277,7 @@ public class SimulacionesDAO implements OperacionesDAO {
 
 	/**
 	 * Método para listar datos con consultas sql
-	 * @author GRUPO 1 DAM - Víctor Matínez Martínez
+	 * @author GRUPO 1 DAM - Víctor Martínez Martínez
 	 * @date 13/06/2018
 	 */
 	
@@ -299,6 +300,7 @@ public class SimulacionesDAO implements OperacionesDAO {
 	/**
 	 * Método para listar Ids con consultas sql
 	 * @author GRUPO 1 DAM - Víctor Matínez Martínez , Jose Antonio Aldeguer Madrid
+	 * @author GRUPO 1 DAM - Jose Aldeguer Madrid
 	 * @date 13/06/2018
 	 */
 	
@@ -313,10 +315,26 @@ public class SimulacionesDAO implements OperacionesDAO {
 		return listado.toString();
 	}
 
+	/**
+	 * Método borrarTodo - Elimina todas las simulaciones 
+	 * almacenadas y regenera las predeterminadas.
+	 * 
+	 * @author DAM Grupo 1 - Juan Antonio Espinosa
+	 * @date 13/06/2018
+	 */
+
 	@Override
 	public void borrarTodo() {
-		// TODO Auto-generated method stub
-		
+		// Elimina cada uno de los objetos obtenidos
+		for (Simulacion simulacion: obtenerTodos()) {
+			try {
+				java.sql.Statement sentencia;
+				sentencia = db.createStatement();
+				sentencia.execute("DELETE FROM sentencias");
+			} catch (SQLException e) {
+				}
+		}
+		cargarPredeterminados();
 	}
 
     /**
