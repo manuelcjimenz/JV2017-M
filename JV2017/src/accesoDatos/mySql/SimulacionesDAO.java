@@ -385,15 +385,15 @@ public class SimulacionesDAO implements OperacionesDAO {
 
 	@Override
 	public void borrarTodo() {
-		// Elimina cada uno de los objetos obtenidos
-		for (Simulacion simulacion: obtenerTodos()) {
+		// TRUNCATE: Elimina la tabla y vuelve a crearla.
+		// DELETE: Elimina los datos de las columnas una por una.
 			try {
 				java.sql.Statement sentencia;
 				sentencia = db.createStatement();
-				sentencia.execute("DELETE FROM sentencias");
+				sentencia.execute("TRUNCATE table sentencias");	// Comando con un resultado más óptimo y directo.
+				// 	sentencia.execute("DELETE FROM sentencias"); // Usar en caso de que el comando "TRUNCATE" no funcione. Comando menos óptimo.
 			} catch (SQLException e) {
 				}
-		}
 		cargarPredeterminados();
 	}
 
