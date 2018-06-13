@@ -277,7 +277,7 @@ public class SimulacionesDAO implements OperacionesDAO {
 
 	/**
 	 * Método para listar datos con consultas sql
-	 * @author GRUPO 1 DAM - Víctor Matínez Martínez
+	 * @author GRUPO 1 DAM - Víctor Martínez Martínez
 	 * @date 13/06/2018
 	 */
 	
@@ -299,7 +299,7 @@ public class SimulacionesDAO implements OperacionesDAO {
 
 	/**
 	 * Método para listar Ids con consultas sql
-	 * @author GRUPO 1 DAM - Víctor Matínez Martínez
+	 * @author GRUPO 1 DAM - Jose Aldeguer Madrid
 	 * @date 13/06/2018
 	 */
 	
