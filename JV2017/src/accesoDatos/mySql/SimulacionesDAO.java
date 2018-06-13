@@ -52,28 +52,52 @@ public class SimulacionesDAO implements OperacionesDAO {
      *  Utiliza inicialización diferida.
      *  Sólo se crea una vez; instancia única -patrón singleton-
      *  @return instancia
+     *  @author: GRUPO 1 DAM Alejandro Motellón Martínez
      */
     public static SimulacionesDAO getInstancia() {
-       return null;
-    }
+		if (instancia == null) {
+			try {
+				instancia = new SimulacionesDAO();
+			}
+			catch(SQLException | DatosException e){
+				e.printStackTrace();
+			}
+		}
+		return instancia;
+	}
  
     /**
      * Constructor por defecto de uso interno.
      * @throws SQLException
      * @throws DatosException
+     * @author: GRUPO 1 DAM Alejandro Motellón Martínez
      */
     private SimulacionesDAO() throws SQLException, DatosException {
-    
-    }
+		inicializar();
+		if (obtener("III1R")==null) {
+			cargarPredeterminados();
+		}
+	}
  
+
     /**
      * Inicializa el DAO, detecta si existen las tablas de datos capturando la  
      * excepción SQLException.
      * @throws SQLException
+     * @author: GRUPO 1 DAM Alejandro Motellón Martínez
      */
     private void inicializar()throws SQLException{
-   
- 
+		bufferObjetos=new ArrayList<Object>();
+		db=Conexion.getDb();
+		try {
+			obtener("III1R");
+			obtener("AAAOT");
+
+		}
+		catch(DatosException e) {
+			crearTablaSimulaciones();
+
+		}
       }
    
  
@@ -93,10 +117,23 @@ public class SimulacionesDAO implements OperacionesDAO {
  
     /**
      *  Método para generar de datos predeterminados.
+     *  @author: GRUPO 1 DAM Alejandro Motellón Martínez
      */
-    private void cargarPredeterminados() {
-        
-    }
+    private void cargarPredeterminados() throws SQLException, DatosException {
+		Simulacion simulacionDemo = null;
+		try {
+			// Obtiene usuario y mundo predeterminados.
+			Usuario usrPredeterminado = UsuariosDAO.getInstancia().obtener("III1R");
+			Mundo mundoPredeterminado = MundosDAO.getInstancia().obtener("Demo0");
+			simulacionDemo = new Simulacion(usrPredeterminado, 
+					new Fecha(2005, 05, 05), mundoPredeterminado, 
+					EstadoSimulacion.PREPARADA);
+			alta(simulacionDemo);
+		} 
+		catch (DatosException e) {
+			e.printStackTrace();
+		}
+	}
  
  
     //Operaciones DAO
