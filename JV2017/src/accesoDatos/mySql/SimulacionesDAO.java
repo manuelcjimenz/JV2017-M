@@ -192,6 +192,27 @@ public class SimulacionesDAO implements OperacionesDAO {
 		return (List<Simulacion>) rs;
 		
 	}
+	
+	@SuppressWarnings("unchecked")
+	/**
+	 * Metodo que devuelve todo lo que tiene un usuario como una consulta sql
+	 * Con la lista completa de simulaciones
+	 * @author GRUPO 1 DAM - Jose Antonio Aldeguer Madird
+	 */
+	public List<Simulacion> obtenerTodosMismoUsr() {
+		ResultSet rs = null;
+		String sql = "SELECT * FROM simulaciones GROUP BY idUsr";
+		try {
+			java.sql.Statement s =  db.createStatement();
+			rs = s.executeQuery(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return (List<Simulacion>) rs;
+		
+	}
+	
 	/**
 	 * Metodo para dar de alta una simulacion con una consulta sql
 	 * @author GRUPO 1 DAM - Francisco Jurado Abad /
