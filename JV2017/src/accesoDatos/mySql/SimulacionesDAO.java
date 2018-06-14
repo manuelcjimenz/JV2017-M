@@ -313,22 +313,22 @@ public class SimulacionesDAO implements OperacionesDAO {
 	@Override
 	public void actualizar(Object obj) throws DatosException {
 		
-		assert obj != null;
+		assert obj != null; // Si el objeto es nulo
 		Simulacion simulacionActualizada = (Simulacion) obj;
-		Simulacion simulacionPrevia = null;
+		Simulacion simulacionPrevia = null; //Dejamos la simulacionPrevia en nulo
 		String sql = "UPDATE simulacion SET idUsr=?, fecha=?, mundo=?, estado=?, " 
-		+ "WHERE simulacionActualizada=?";
-		java.sql.Statement conexion;
+		+ "WHERE simulacionActualizada=?";	//La consulta SQL
+		java.sql.Statement conexion; // Crea una conexion
 		
 		try {
-			simulacionPrevia = obtener(simulacionActualizada.getIdSimulacion());
-			simulacionPrevia.setUsr(simulacionActualizada.getUsr());
-			simulacionPrevia.setMundo(simulacionActualizada.getMundo());
-			simulacionPrevia.setFecha(simulacionActualizada.getFecha());
-			simulacionPrevia.setEstado(simulacionActualizada.getEstado());
+			simulacionPrevia = obtener(simulacionActualizada.getIdSimulacion()); //Obtiene el id de la simulacion
+			simulacionPrevia.setUsr(simulacionActualizada.getUsr()); //Actualiza usr
+			simulacionPrevia.setMundo(simulacionActualizada.getMundo()); //Actualiza mundo
+			simulacionPrevia.setFecha(simulacionActualizada.getFecha()); //Actualiza la fecha
+			simulacionPrevia.setEstado(simulacionActualizada.getEstado()); //Actualiza el estado
 			conexion = db.createStatement();
-			conexion.executeUpdate(sql);
-			conexion.close();
+			conexion.executeUpdate(sql); //Ejecuta la accion del string "sql"
+			conexion.close(); //Cierra la conexion con la base de datos
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
